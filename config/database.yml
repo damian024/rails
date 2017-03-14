@@ -50,4 +50,3 @@ test:
 production:
   <<: *default
   database: sql11163802
-  host: mysql2://sql11.freemysqlhosting.net
