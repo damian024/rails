@@ -12,12 +12,25 @@
  *
  *= require_tree .
  *= require_self
+ *= require trix
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
 
 .breakable{
   word-wrap: break-word;
   overflow-wrap: break-word;
   word-break: break-all;
+}
+
+.wysihtml5-sandbox{
+  width:100% !important;
+  height: 40% !important;
+}
+
+.ctr{
+  padding: 5px;
 }
