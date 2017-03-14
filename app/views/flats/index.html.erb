@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Flats</h1>
-
-<table>
+<h1>Available Flats</h1>
+<div class="new">Add new flat  <%= link_to '', new_flat_path, class: "btn btn-default btn-circle btn-outline glyphicon glyphicon-plus" %></div>
+<table class="table">
   <thead>
     <tr>
-      <th>Size</th>
+      <th>Size m^3</th>
       <th>Price</th>
       <th>Rooms</th>
       <th>Description</th>
@@ -19,10 +19,10 @@
         <td><%= flat.size %></td>
         <td><%= flat.price %></td>
         <td><%= flat.rooms %></td>
-        <td><%= flat.description %></td>
-        <td><%= link_to 'Show', flat %></td>
-        <td><%= link_to 'Edit', edit_flat_path(flat) %></td>
-        <td><%= link_to 'Destroy', flat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="breakable"><%= flat.description %></td>
+        <td> <%= link_to '', flat , class: "btn btn-default btn-circle btn-outline glyphicon glyphicon-search" %>
+          <%= link_to '', edit_flat_path(flat), class: "btn btn-default btn-circle btn-outline glyphicon glyphicon-pencil" %>
+          <%= link_to '', flat, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-circle btn-outline glyphicon glyphicon-remove" %></td
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Flat', new_flat_path %>
+

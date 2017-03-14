@@ -34,7 +34,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'devise'
 gem 'md_simple_editor'
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'sass-rails', '>= 3.2'
+gem 'bcrypt'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

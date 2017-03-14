@@ -9,6 +9,13 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <div class="col-md-6">
+      <%= link_to 'Back', flats_path, class: "btn btn-default btn-circle btn-outline" %>
+    </div>
+    <div class="col-md-6">
+      <div class="pull-right">
+        <%= f.button :submit %>
+      </div>
+    </div>
   </div>
 <% end %>

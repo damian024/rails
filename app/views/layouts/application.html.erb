@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Mieszkania</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Flat's catalog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to "Flat's catalog", root_path, class: "navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <% if user_signed_in? %>
+      <li><%= link_to 'Available flats', flats_path %></li>
+      <li><%= link_to 'Add new flat', new_flat_path %></li>
+          <% end %>
+    </ul>
+      <ul class="nav navbar-nav navbar-right">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+        <% if user_signed_in? %>
+            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <li><%= link_to "Log In", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <footer>
+      <div class="container text-center">
+        <p>Copyright &copy; Damian Żołądek 2017</p>
+      </div>
+    </footer>
+</body>
 </html>
