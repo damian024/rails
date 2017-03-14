@@ -1,10 +1,11 @@
 class FlatsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   # GET /flats
   # GET /flats.json
   def index
-    @flats = Flat.all
+    @flats = Flat.paginate(:page => params[:page])
   end
 
   # GET /flats/1
