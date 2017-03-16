@@ -5,9 +5,10 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Title</th>
       <th>Size m^3</th>
       <th>Price</th>
-      <th>Rooms</th
+      <th>Rooms</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,6 +16,7 @@
   <tbody>
     <% @flats.each do |flat| %>
       <tr>
+        <td><%= flat.title %></td>
         <td><%= flat.size %></td>
         <td><%= flat.price %></td>
         <td><%= flat.rooms %></td>

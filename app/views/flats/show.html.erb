@@ -5,7 +5,8 @@
   <%= link_to 'Edit', edit_flat_path(@flat), class: "btn btn-default btn-circle btn-outline" %>
   <%= link_to 'Back', flats_path, class: "btn btn-default btn-circle btn-outline" %>
 </div>
-<h1 class="text-center">Informations</h1>
+<h1 class="text-center"><%= @flat.title %></h1>
+<h4 class="text-center ctr">Informations</h4>
 <table class="table">
   <tbody>
       <tr>
@@ -22,7 +23,7 @@
       </tr>
   </tbody>
 </table>
-<h1 class="text-center">Description</h1>
+<h4 class="text-center">Description</h4>
 <div class="description text-center">
 <%= raw @flat.description %>
 </div>
