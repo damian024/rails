@@ -1,24 +1,30 @@
+
+
 <p id="notice"><%= notice %></p>
+<div class="row ctr">
+  <%= link_to 'Edit', edit_flat_path(@flat), class: "btn btn-default btn-circle btn-outline" %>
+  <%= link_to 'Back', flats_path, class: "btn btn-default btn-circle btn-outline" %>
+</div>
+<h1 class="text-center">Informations</h1>
+<table class="table">
+  <tbody>
+      <tr>
+        <td>Size</td>
+        <td><%= @flat.size %></td>
+      </tr>
+      <tr>
+        <td>Price</td>
+        <td><%= @flat.price %></td>
+      </tr>
+      <tr>
+        <td>Rooms</td>
+        <td><%= @flat.rooms %></td>
+      </tr>
+  </tbody>
+</table>
+<h1 class="text-center">Description</h1>
+<div class="description text-center">
+<%= raw @flat.description %>
+</div>
 
-<p>
-  <strong>Size:</strong>
-  <%= @flat.size %>
-</p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @flat.price %>
-</p>
-
-<p>
-  <strong>Rooms:</strong>
-  <%= @flat.rooms %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @flat.description %>
-</p>
-
-<%= link_to 'Edit', edit_flat_path(@flat) %> |
-<%= link_to 'Back', flats_path %>

@@ -34,3 +34,34 @@
 .ctr{
   padding: 5px;
 }
+.page{
+  min-height: 70%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  background-image: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0.65) 100%), url('http://hdwallpaperbackgrounds.net/wp-content/uploads/2016/07/white-background-5.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: #5b5b5b;
+  text-shadow: 0 1px 0 #efefef;
+}
+trix-editor{
+  background-color:#ffffff !important;
+}
+footer{
+  margin-top: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  font-weight: 700;
+  background-color: rgba(0,0,0,0.05);
+  text-align: center;
+}
+.access{
+  color:#ffffff !important;
+}
