@@ -8,13 +8,13 @@
     <%= f.input :rooms %>
     <%= f.trix_editor :description %>
   </div>
-
-  <div class="form-actions">
-    <div class="ctr col-md-5 pt-4">
+    <div class="form-actions">
+      <label class="col-md-4 control-label" for="singlebutton"></label>
+      <div class="col-md-4 center-block">
         <%= link_to 'Back', flats_path, class: "btn btn-default btn-circle btn-outline" %>
         <div class="pull-right">
           <%= f.button :submit %>
         </div>
+      </div>
     </div>
-  </div>
 <% end %>
