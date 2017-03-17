@@ -5,7 +5,7 @@ class FlatsController < ApplicationController
   # GET /flats
   # GET /flats.json
   def index
-    @flats = Flat.paginate(:page => params[:page])
+    @flats = Flat.paginate(:page => params[:page], :per_page => 8).order('id DESC')
   end
 
   # GET /flats/1

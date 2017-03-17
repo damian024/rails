@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#require 'Flat'
+#1.upto(10) do |i|
+#Flat.([{
+#          title: Faker::Name.title
+#          size: Faker::Number.number(2)
+#          rooms: Faker::Number.number(2)
+#          price: Faker::Number.number(10)
+#          description Faker::Lorem.paragraph(2)
+#
+# }])
+  50.times do |i|
+    Flat.create(
+          title: Faker::Name.title,
+          size: Faker::Number.decimal(2),
+          rooms: Faker::Number.number(2),
+          price: Faker::Number.number(7),
+          description: Faker::Hipster.paragraph)
+  end
