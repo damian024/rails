@@ -13,13 +13,13 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 3306
-  username: sql11163802
-  password: iKgKtqcgxC
-  host: sql11.freemysqlhosting.net
+  username: sql8167382
+  password: 6CVSau8Sai
+  host: sql8.freemysqlhosting.net
 
 development:
   <<: *default
-  database: sql11163802
+  database: sql8167382
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -49,4 +49,4 @@ test:
 #
 production:
   <<: *default
-  database: sql11163802
+  database: sql8167382
