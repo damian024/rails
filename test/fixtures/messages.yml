@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  conversation: one
+  time: 2017-04-23 17:44:11
+  readed: false
+  text: MyText
+
+two:
+  conversation: two
+  time: 2017-04-23 17:44:11
+  readed: false
+  text: MyText

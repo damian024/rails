@@ -10,23 +10,23 @@
 #   http://dev.mysql.com/doc/refman/5.7/en/old-client.html
 #
 default: &default
-  adapter: mysql2
-  encoding: utf8
-  pool: 3306
-  username: sql8167382
-  password: 6CVSau8Sai
-  host: sql8.freemysqlhosting.net
+  adapter: postgresql
+  encoding: unicode
+  pool: 5432
+  username: oejxvhgklgrsbp
+  password: bce5b5126433df1f76b6577363ce1631df7c2ceb3e7ceb301befc7b368f6ba7f
+  host: ec2-54-228-235-185.eu-west-1.compute.amazonaws.com
 
 development:
   <<: *default
-  database: sql8167382
+  database: den7tqtlv41ne
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: mieszkania_test
+  database: den7tqtlv41ne
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

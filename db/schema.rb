@@ -10,34 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316231333) do
+ActiveRecord::Schema.define(version: 20170423154411) do
 
-  create_table "bootsy_image_galleries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "bootsy_image_galleries", force: :cascade do |t|
     t.string   "bootsy_resource_type"
     t.integer  "bootsy_resource_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "bootsy_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "bootsy_images", force: :cascade do |t|
     t.string   "image_file"
     t.integer  "image_gallery_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "flats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.float    "size",        limit: 24
-    t.decimal  "price",                     precision: 10
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "flat_id"
+    t.integer  "author"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flat_id"], name: "index_conversations_on_flat_id", using: :btree
+  end
+
+  create_table "flats", force: :cascade do |t|
+    t.float    "size"
+    t.decimal  "price"
     t.integer  "rooms"
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "title"
     t.integer  "author"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "messages", force: :cascade do |t|
+    t.integer  "conversation_id"
+    t.datetime "time"
+    t.boolean  "readed"
+    t.text     "text"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -54,4 +75,6 @@ ActiveRecord::Schema.define(version: 20170316231333) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "conversations", "flats"
+  add_foreign_key "messages", "conversations"
 end
