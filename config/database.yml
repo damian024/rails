@@ -18,8 +18,12 @@ default: &default
   host: ec2-54-228-235-185.eu-west-1.compute.amazonaws.com
 
 development:
-  <<: *default
-  database: den7tqtlv41ne
+  adapter: mysql2
+  encoding: utf8
+  pool: 3306
+  username: root
+  database: test
+  host: 127.0.0.1
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

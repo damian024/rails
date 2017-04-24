@@ -1,1 +1,1 @@
-json.partial! "conversations/conversation", conversation: @conversation
+json.partial! "conversations/conversation", conversation: @conversation,

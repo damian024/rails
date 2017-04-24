@@ -2,4 +2,11 @@
 
 <%= render 'form', message: @message %>
 
-<%= link_to 'Back', messages_path %>
+<% if params[:conversation_id].nil?%>
+    <% if !params[:id].nil?%>
+      <%= link_to 'Back', flat_path(params[:id]) , class: "btn btn-default btn-circle btn-outline" %>
+    <% end %>
+<% else %>
+    <%= link_to 'Back', conversations_path+ '/' + params[:conversation_id] , class: "btn btn-default btn-circle btn-outline" %>
+<% end %>
+

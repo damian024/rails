@@ -2,9 +2,11 @@
 
 <h1>Conversations</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
+      <th>Author</th>
+      <th>Ad Title</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,14 +14,13 @@
   <tbody>
     <% @conversations.each do |conversation| %>
       <tr>
-        <td><%= link_to 'Show', conversation %></td>
-        <td><%= link_to 'Edit', edit_conversation_path(conversation) %></td>
-        <td><%= link_to 'Destroy', conversation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= conversation.user.email %></td>
+        <td><%= conversation.flat.title %></td>
+        <td>
+         <%= link_to '', conversation , class: "btn btn-default btn-circle btn-outline glyphicon glyphicon-envelope" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Conversation', new_conversation_path %>

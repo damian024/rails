@@ -20,21 +20,27 @@ Rails.application.configure do
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
+  # noinspection RubyResolve,RubyResolve
   config.action_controller.perform_caching = false
 
   # Raise exceptions instead of rendering exception templates.
+  # noinspection RubyResolve,RubyResolve
   config.action_dispatch.show_exceptions = false
 
   # Disable request forgery protection in test environment.
+  # noinspection RubyResolve,RubyResolve
   config.action_controller.allow_forgery_protection = false
+  # noinspection RubyResolve,RubyResolve
   config.action_mailer.perform_caching = false
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
+  # noinspection RubyResolve,RubyResolve
   config.action_mailer.delivery_method = :test
 
   # Print deprecation notices to the stderr.
+  # noinspection RubyResolve,RubyResolve
   config.active_support.deprecation = :stderr
 
   # Raises error for missing translations

@@ -5,10 +5,12 @@
   <div class="col-md-4 center-block">
     <img class="img-responsive" src="https://img.clipartfest.com/e6d91b21f0d8b86fb9e6918affa1af0c_download-this-image-as-pearl-house-logo-clipart_600-600.png"/>
 
-    <% if user_signed_in? %>
+    <% # noinspection RubyResolve
+       if user_signed_in? %>
         <%= link_to "Show me available flats", flats_path, class: "btn btn-danger access center-block" %>
     <% else %>
-        <%= link_to "Log in to get full access", new_user_session_path, class: "btn btn-danger access center-block" %>
+        <%= # noinspection RubyResolve
+            link_to "Log in to get full access", new_user_session_path, class: "btn btn-danger access center-block" %>
     <% end %>
   </div>
 </div>

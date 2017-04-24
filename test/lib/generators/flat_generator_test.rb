@@ -1,6 +1,7 @@
 require 'test_helper'
 require 'generators/flat/flat_generator'
 
+# noinspection ALL,RubyResolve
 class FlatGeneratorTest < Rails::Generators::TestCase
   tests FlatGenerator
   destination Rails.root.join('tmp/generators')

@@ -12,6 +12,7 @@ Rails.application.configure do
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
+  # noinspection RubyResolve,RubyResolve
   config.action_controller.perform_caching = true
 
   # Disable serving static files from the `/public` folder by default since
@@ -23,8 +24,10 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
+  # noinspection RubyResolve
   config.assets.compile = false
 
+  # noinspection RubyResolve
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
@@ -57,6 +60,7 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "mieszkania_#{Rails.env}"
+  # noinspection RubyResolve,RubyResolve
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
@@ -65,9 +69,11 @@ Rails.application.configure do
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
+  # noinspection RubyResolve
   config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners.
+  # noinspection RubyResolve,RubyResolve
   config.active_support.deprecation = :notify
 
   # Use default logging formatter so that PID and timestamp are not suppressed.

@@ -1,3 +1,4 @@
+# noinspection ALL,RubyResolve,RubyResolve,RubyResolve,RubyResolve
 class FlatsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_flat, only: [:show, :edit, :update, :destroy]

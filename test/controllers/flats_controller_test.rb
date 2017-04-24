@@ -1,5 +1,6 @@
 require 'test_helper'
 
+# noinspection ALL,RubyResolve
 class FlatsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @flat = flats(:one)

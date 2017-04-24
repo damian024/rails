@@ -1,5 +1,6 @@
 require 'test_helper'
 
+# noinspection ALL,RubyResolve
 class ConversationsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @conversation = conversations(:one)

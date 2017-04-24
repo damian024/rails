@@ -21,10 +21,13 @@
         <td><%= flat.price %></td>
         <td><%= flat.rooms %></td>
         <td> <%= link_to '', flat , class: "btn btn-default btn-circle btn-outline glyphicon glyphicon-search" %>
-       <% if flat.author == current_user.id %>
+          <%= link_to '', new_message_path(:id => flat.id), class: "btn btn-default btn-circle btn-outline glyphicon glyphicon-envelope" %>
+       <% # noinspection RubyResolve
+          if flat.author == current_user.id %>
           <%= link_to '', edit_flat_path(flat), class: "btn btn-default btn-circle btn-outline glyphicon glyphicon-pencil" %>
-          <%= link_to '', flat, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-circle btn-outline glyphicon glyphicon-remove" %></td
+          <%= link_to '', flat, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-circle btn-outline glyphicon glyphicon-remove" %>
       <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
