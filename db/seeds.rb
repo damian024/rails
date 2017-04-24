@@ -15,11 +15,19 @@
 #          description Faker::Lorem.paragraph(2)
 #
 # }])
-  50.times do |i|
+
+
+50.times do |i|
+  password = "Hasloo123"
+  user = User.create(
+      email: Faker::Internet.email,
+      password: password,
+      password_confirmation: password)
     Flat.create(
-          title: Faker::Name.title,
-          size: Faker::Number.decimal(2),
-          rooms: Faker::Number.number(2),
-          price: Faker::Number.number(7),
-          description: Faker::Hipster.paragraph)
-  end
+        title: Faker::Name.title,
+        size: Faker::Number.decimal(2),
+        rooms: Faker::Number.number(2),
+        price: Faker::Number.number(7),
+        description: Faker::Hipster.paragraph,
+        author: user.id).save!
+end

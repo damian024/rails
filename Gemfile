@@ -35,6 +35,10 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'trix'
 gem 'faker'
 gem 'pg'
+group :development do
+  gem "better_errors"
+end
+gem "binding_of_caller"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

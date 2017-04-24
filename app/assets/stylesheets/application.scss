@@ -88,12 +88,14 @@ body {
     text-align: right;
     font-size: 80%;
     font-weight: bolder;
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }
 .left-chart {
   margin-right: 20%;
   .text{
-    background-color: #f0f0f0;
+    background-color: #ffff99;
     &:after{
       top:16px; /* controls vertical position */
       left:-50px; /* value = - border-left-width - border-right-width */
@@ -106,10 +108,10 @@ body {
     text-align: right;
   }
 }
-.rigth-chart {
+.right-chart {
   margin-left: 20%;
   .text{
-    background-color: #730E15;
+    background-color: #ccff99;
   }
   .time {
     text-align: left;

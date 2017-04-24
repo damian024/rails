@@ -5,8 +5,8 @@ class ConversationsController < ApplicationController
   # GET /conversations
   # GET /conversations.json
   def index
-    @adds = Flat.where(:author == current_user )
-    @conversations = Conversation.all
+    @ownedFlats = Flat.where(author:current_user.id ).pluck("id")
+    @conversations = Conversation.where('user_id=' +current_user.id.to_s+ ' OR flat_id IN (?)', @ownedFlats)
   end
 
   # GET /conversations/1

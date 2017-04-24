@@ -16,8 +16,11 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    if(params.has_key?(:id) and Flat.where(id:params[:id] ).present?)
+    if(params.has_key?(:id) and @flats =Flat.where(id:params[:id]) and @flats.present?)
       @message = Message.new
+      if @flats.first.author == current_user.id
+        redirect_to :back
+      end
     else
       if params.has_key?(:conversation_id) and Conversation.where(id: params[:conversation_id] ).present?
         @message = Message.new
@@ -35,37 +38,37 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     respond_to do |format|
-      if message_params.has_key?(:flat_id) and message_params[:flat_id] != '-1'
-        @conversation = Conversation.find_by_flat_id(message_params[:flat_id])
-        if @conversation.nil?
-          @conversation = Conversation.new
-          @conversation.user = User.find(current_user.id)
-          @conversation.flat = Flat.find(message_params[:flat_id])
-            if !@conversation.save
-              format.html { redirect_to flat_path(message_params[:flat_id])}
-              format.json { render json: @conversation.errors, status: :unprocessable_entity }
-            end
-          end
-      else
-        @conversation = Conversation.find(message_params[:conversation_id])
-        if @conversation.nil?
-          format.html { redirect_to flat_path(message_params[:flat_id])}
-          format.json { render json: @conversation.errors, status: :unprocessable_entity }
-        end
+    if message_params.has_key?(:flat_id) and message_params[:flat_id] != '-1'
+      @conversation = Conversation.includes(:user).find_by_flat_id(message_params[:flat_id])
+      if @conversation.nil?
+        @conversation = Conversation.new
+        @conversation.user = User.find(current_user.id)
+        @conversation.flat = Flat.find(message_params[:flat_id])
+        @conversation.save
       end
+      if @conversation.user.id == @conversation.flat.author
+        format.html { redirect_to root_path , notice: 'Message was successfully updated.' }
+        format.json { render :show, status: :ok, location: @conversation }
 
-      @message = Message.new
-      @message.text = message_params[:text]
-      @message.conversation_id = @conversation
-      @message.author = current_user.id
-      if @message.save
-        format.html { redirect_to @conversation, notice: 'Message was successfully created.' }
-        format.json { render :show, status: :created, location: @conversation }
-      else
-        format.html { redirect_to new_message_path(:conversation_id => @conversation.id) }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
+      end
+    else
+      if message_params.has_key?(:conversation_id) and message_params[:conversation_id] != '-1'
+        @conversation = Conversation.find(message_params[:conversation_id])
       end
     end
+    @message = Message.new
+    @message.text = 'jaajajaja'
+    @message.conversation_id = @conversation.id
+    @message.author = current_user.id
+    @message.time = 5;
+      if !@conversation.nil? and @message.save!
+        format.html { redirect_to @conversation, notice: 'Message was successfully updated.' }
+        format.json { render :show, status: :ok, location: @conversation }
+        else
+        format.html { redirect_to :back, :locals => message_params}
+        format.json { render json: @messages.errors, status: :unprocessable_entity }
+      end
+      end
   end
 
   # PATCH/PUT /messages/1
