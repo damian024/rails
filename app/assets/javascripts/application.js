@@ -62,7 +62,7 @@ function initMap() {
     if(!isNaN(lng) && !isNaN(lat) ) {
         placeMarker({lat: lat, lng: lng})
     }
-    else {
+    else if (!$("#map").hasAttribute() && !$("#map").hasAttribute()){
         google.maps.event.addListener(map, 'click', function (event) {
             placeMarker(event.latLng);
         });
