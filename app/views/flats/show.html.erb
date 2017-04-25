@@ -26,6 +26,13 @@
       </tr>
   </tbody>
 </table>
+<div class="container-fluid">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="embed-responsive embed-responsive-16by9">
+      <div id="map" lng=<%=@flat.longitude%> lat=<%=@flat.latitude%> class="embed-responsive-item"></div>
+    </div>
+  </div>
+</div>
 <h4 class="text-center">Description</h4>
 <div class="description text-center">
 <%= raw @flat.description %>

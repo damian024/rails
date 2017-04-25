@@ -14,6 +14,82 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require trix
+//= require underscore
+//= require gmaps/google
+//= require jquery3
+//= require jquery_ujs
+
+/*var generateMap = function (){
+    if($('#map').length == 1){
+         handler = Gmaps.build('Google');
+         map = handler.buildMap({
+            provider: {
+                disableDefaultUI: true
+                // pass in other Google Maps API options here
+            },
+            internal: {
+                id: 'map'
+            }
+        });
+        console.log(handler);
+        map.addListener('click', function(event){
+            console.log("click");
+        });
+    }
+};
+
+$(document).ready(function (){
+    generateMap();
+}); */
+var marker;
+function initMap() {
+    var uluru = {lat: -25.363, lng: 131.044};
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: uluru
+    });
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            map.setCenter(pos);
+        });
+    }
+    var lng = parseFloat($("#map").attr("lng"));
+    var lat = parseFloat($("#map").attr("lat"));
+    if(!isNaN(lng) && !isNaN(lat) ) {
+        placeMarker({lat: lat, lng: lng})
+    }
+    else {
+        google.maps.event.addListener(map, 'click', function (event) {
+            placeMarker(event.latLng);
+        });
+    }
+}
+function SetFirstPiont(){
+    var lng = parseFloat($("#flat_longitude").val());
+    var lat = parseFloat($("#flat_latitude").val());
+    if(!isNaN(lng) && !isNaN(lat) ) {
+        placeMarker({lat: lat, lng: lng})
+    }
+}
+function placeMarker(location) {
+    if(marker !== undefined) {
+        console.log(marker);
+        marker.setMap(null)
+    }
+    marker = new google.maps.Marker({
+        position: location,
+        map: map
+    });
+    map.panTo(marker.getPosition());
+    $("#flat_longitude").val(location.lng);
+    $("#flat_latitude").val(location.lat);
+}
+
+
 
 
 

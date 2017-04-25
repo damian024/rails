@@ -29,5 +29,7 @@
         rooms: Faker::Number.number(2),
         price: Faker::Number.number(7),
         description: Faker::Hipster.paragraph,
-        author: user.id).save!
+        author: user.id,
+        logitude: Faker::Number.number(2),
+        latitude: Faker::Number.number(2)).save!
 end

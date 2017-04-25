@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424014956) do
+ActiveRecord::Schema.define(version: 20170425015111) do
 
   create_table "bootsy_image_galleries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "bootsy_resource_type"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20170424014956) do
     t.datetime "updated_at",                               null: false
     t.string   "title"
     t.integer  "author"
+    t.float    "longitude",   limit: 24
+    t.float    "latitude",    limit: 24
   end
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

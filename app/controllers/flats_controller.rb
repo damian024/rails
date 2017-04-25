@@ -86,6 +86,6 @@ class FlatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flat_params
-      params.require(:flat).permit(:title, :size, :price, :rooms, :description)
+      params.require(:flat).permit(:title, :size, :price, :rooms, :description, :longitude, :latitude)
     end
 end

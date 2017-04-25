@@ -6,6 +6,16 @@
     <%= f.input :size %>
     <%= f.input :price %>
     <%= f.input :rooms %>
+    <%= f.input :longitude,:as => :hidden %>
+    <%= f.input :latitude, :as => :hidden %>
+    <div class="container-fluid">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="embed-responsive embed-responsive-16by9">
+          <div id="map" class="embed-responsive-item"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pb"></div>
     <%= f.trix_editor :description %>
   </div>
     <div class="form-actions">

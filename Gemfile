@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'gmaps4rails'
 gem 'simple_form'
 gem 'will_paginate', '~> 3.1.0'
 gem 'devise'
@@ -35,6 +35,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'trix'
 gem 'faker'
 gem 'pg'
+gem 'underscore-rails'
+gem 'jquery-rails'
+
 group :development do
   gem "better_errors"
 end
