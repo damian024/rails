@@ -43,29 +43,32 @@ $(document).ready(function (){
 }); */
 var marker;
 function initMap() {
+    var onlyView = typeof $("#map").attr("lat") !==  typeof undefined && typeof $("#map").attr("lng") !== typeof undefined;
     var uluru = {lat: -25.363, lng: 131.044};
+    var zoomSize = (onlyView) ? 13: 9;
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
+        zoom: zoomSize,
         center: uluru
     });
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-            map.setCenter(pos);
-        });
-    }
     var lng = parseFloat($("#map").attr("lng"));
     var lat = parseFloat($("#map").attr("lat"));
     if(!isNaN(lng) && !isNaN(lat) ) {
         placeMarker({lat: lat, lng: lng})
+        map
     }
-    else if (!$("#map").hasAttribute() && !$("#map").hasAttribute()){
+    else if (!onlyView){
         google.maps.event.addListener(map, 'click', function (event) {
             placeMarker(event.latLng);
         });
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                map.setCenter(pos);
+            });
+        }
     }
 }
 function SetFirstPiont(){
