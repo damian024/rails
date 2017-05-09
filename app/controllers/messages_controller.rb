@@ -41,8 +41,8 @@ class MessagesController < ApplicationController
         @conversation = Conversation.find(message_params[:conversation_id])
       end
     end
-    @message = Message.new
-    @message.text = 'jaajajaja'
+    @message = Message.new()
+    @message.text = message_params[:text]
     @message.conversation_id = @conversation.id
     @message.author = current_user.id
     @message.time = 5;

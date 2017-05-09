@@ -2,7 +2,7 @@
 <h4>Conversation with <%= @conversation.user.email %></h4>
 <h5> About <%= link_to @conversation.flat.title, flat_path(@conversation.flat) %></h5>
 <div class="container-fluid">
-  <% @messages.each do |message| %>
+  <% Message.where("messages.conversation_id" => @conversation).each do |message| %>
       <div class="message <%= (message.author == current_user.id)? "left-chart" :"right-chart"%>">
       <div class="text">
         <div class="author"><%= (message.author == current_user.id)? "You" : User.find(message.author).email  %></div>
