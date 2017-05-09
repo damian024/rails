@@ -7,6 +7,7 @@ class ConversationsController < ApplicationController
   def index
     @ownedFlats = Flat.where(author:current_user.id ).pluck("id")
     @conversations = Conversation.where('user_id=' +current_user.id.to_s+ ' OR flat_id IN (?)', @ownedFlats)
+    @email = User.find(current_user.id).email;
   end
 
   # GET /conversations/1
