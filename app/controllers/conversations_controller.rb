@@ -14,7 +14,7 @@ class ConversationsController < ApplicationController
   # GET /conversations/1.json
   def show
     @conversation = Conversation.includes(:user).find(params[:id])
-    @message = Message.find_by(:conversation  => @conversation)
+    @messages = Message.find_by(:conversation  => @conversation)
   end
 
   # POST /conversations
