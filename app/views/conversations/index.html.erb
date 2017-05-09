@@ -14,8 +14,8 @@
   <tbody>
     <% @conversations.each do |conversation| %>
       <tr>
-        <td><%= (conversation.user.email === @email) ? "You" : conversation.user.email %></td>
-        <td><%= link_to @conversation.flat.title, flat_path(@conversation.flat) %></td>
+        <td><%= conversation.user.email %></td>
+        <td><%= link_to conversation.flat.title, flat_path(conversation.flat) %></td>
         <td>
          <%= link_to '', conversation , class: "btn btn-default btn-circle btn-outline glyphicon glyphicon-envelope" %>
         </td>
