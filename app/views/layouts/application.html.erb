@@ -34,6 +34,7 @@
 
         <% # noinspection RubyResolve
            if user_signed_in? %>
+            <li><a><%= current_user.email %></a></li>
             <li><%= link_to "Messages", conversations_path %></li>
             <li><%= # noinspection RubyResolve
                     link_to "Sign out", destroy_user_session_path, :method => :delete %></li>

@@ -16,20 +16,60 @@
 #
 # }])
 
+password = "Hasloo123"
 
-50.times do |i|
-  password = "Hasloo123"
+2.times do |i|
   user = User.create(
       email: Faker::Internet.email,
       password: password,
-      password_confirmation: password)
+      password_confirmation: password).save!
+end
+
+userOffset = rand(User.count);
+
+10.times do |i|
     Flat.create(
         title: Faker::Name.title,
         size: Faker::Number.decimal(2),
         rooms: Faker::Number.number(2),
         price: Faker::Number.number(7),
         description: Faker::Hipster.paragraph,
-        author: user.id,
+        author: User.offset(userOffset).first.id,
         longitude: Faker::Number.number(2),
         latitude: Faker::Number.number(2)).save!
 end
+
+flatsOffset = rand(Flat.count);
+
+10.times do |i|
+  flat = Flat.new;
+  user = User.new;
+  loop do
+    flat = Flat.order("RANDOM()").first;
+    user = User.order("RANDOM()").first;
+    break if(flat.author != user.id)
+  end
+
+  Conversation.create(
+      flat: flat,
+      user: user
+  ).save!;
+  end
+
+
+
+
+20.times do |b|
+    conversation = Conversation.order("RANDOM()").first;
+    user = User.find(conversation.flat.author);
+    Message.create(
+        conversation:conversation,
+        text: Faker::Hipster.paragraph,
+        author: conversation.user.id
+    ).save!
+    Message.create(
+        conversation:conversation,
+        text: Faker::Hipster.paragraph,
+        author: user.id
+    ).save!
+  end
