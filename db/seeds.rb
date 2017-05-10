@@ -25,8 +25,6 @@ password = "Hasloo123"
       password_confirmation: password).save!
 end
 
-userOffset = rand(User.count);
-
 10.times do |i|
     Flat.create(
         title: Faker::Name.title,
@@ -34,14 +32,12 @@ userOffset = rand(User.count);
         rooms: Faker::Number.number(2),
         price: Faker::Number.number(7),
         description: Faker::Hipster.paragraph,
-        author: User.offset(userOffset).first.id,
+        author: User.order("RANDOM()").first,
         longitude: Faker::Number.number(2),
         latitude: Faker::Number.number(2)).save!
 end
 
-flatsOffset = rand(Flat.count);
-
-10.times do |i|
+15.times do |i|
   flat = Flat.new;
   user = User.new;
   loop do
@@ -59,7 +55,7 @@ flatsOffset = rand(Flat.count);
 
 
 
-20.times do |b|
+40.times do |b|
     conversation = Conversation.order("RANDOM()").first;
     user = User.find(conversation.flat.author);
     Message.create(
