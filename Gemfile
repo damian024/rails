@@ -37,6 +37,7 @@ gem 'faker'
 gem 'pg'
 gem 'underscore-rails'
 gem 'jquery-rails'
+gem 'geocoder'
 
 group :development do
   gem "better_errors"

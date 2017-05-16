@@ -72,6 +72,7 @@ GEM
     execjs (2.7.0)
     faker (1.7.3)
       i18n (~> 0.5)
+    geocoder (1.4.3)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     gmaps4rails (2.1.2)
@@ -186,6 +187,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   faker
+  geocoder
   gmaps4rails
   jbuilder (~> 2.5)
   jquery-rails

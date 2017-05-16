@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h4>Conversation with <%= @conversation.user.email %></h4>
+<h4>Conversation with <%= (@conversation.user.email == current_user.email) ? User.find(@conversation.flat.author).email: @conversation.user.email%></h4>
 <h5> About <%= link_to @conversation.flat.title, flat_path(@conversation.flat) %></h5>
 <div class="container-fluid">
   <% Message.where("messages.conversation_id" => @conversation).each do |message| %>

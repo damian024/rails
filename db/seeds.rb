@@ -26,23 +26,29 @@ password = "Hasloo123"
 end
 
 10.times do |i|
+  user = User.find(User.pluck(:id).shuffle.first);
+  place = nil
+  loop do
+   place = Geocoder.coordinates(Faker::Address.street_address);
+  break if place != nil
+  end
     Flat.create(
         title: Faker::Name.title,
         size: Faker::Number.decimal(2),
         rooms: Faker::Number.number(2),
         price: Faker::Number.number(7),
-        description: Faker::Hipster.paragraph,
-        author: User.order("RANDOM()").first,
-        longitude: Faker::Number.number(2),
-        latitude: Faker::Number.number(2)).save!
+        description: '<b>' + Faker::Hipster.paragraph + '</b><br><br><i>'+ Faker::Hipster.paragraph + '</i>',
+        author: user.id,
+        longitude: place[1],
+        latitude: place[0]).save!
 end
 
 15.times do |i|
   flat = Flat.new;
   user = User.new;
   loop do
-    flat = Flat.order("RANDOM()").first;
-    user = User.order("RANDOM()").first;
+    flat = Flat.find(Flat.pluck(:id).shuffle.first);
+    user = User.find(User.pluck(:id).shuffle.first);
     break if(flat.author != user.id)
   end
 
@@ -56,7 +62,7 @@ end
 
 
 40.times do |b|
-    conversation = Conversation.order("RANDOM()").first;
+    conversation = Conversation.find(Conversation.pluck(:id).shuffle.first);
     user = User.find(conversation.flat.author);
     Message.create(
         conversation:conversation,
